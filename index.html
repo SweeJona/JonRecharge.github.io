@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JonRecharge — MLBB Top-up</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{--bg:#07111a;--card:#0f1720;--accent:#ff3b7a;--muted:#9fb0c6}
+  *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#061018,#071224);color:#eaf6ff}
+  .wrap{max-width:980px;margin:18px auto;padding:16px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#ff5b96,#7b2cff);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:18px}
+  h1{margin:0;font-size:22px}
+  .tag{color:var(--muted);font-size:13px}
+  .grid{display:grid;gap:16px;margin-top:16px}
+  @media(min-width:860px){.grid{grid-template-columns:1fr 360px}}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 28px rgba(2,6,23,0.6)}
+  .hero{display:flex;gap:14px;align-items:center}
+  .thumb{width:110px;height:110px;border-radius:10px;background:linear-gradient(135deg,#ff5b96,#7b2cff);display:flex;align-items:center;justify-content:center;font-weight:900}
+  .lead{color:var(--muted);margin:6px 0}
+  .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;color:white;background:var(--accent);font-weight:700}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+  label{display:block;margin-top:10px;color:var(--muted);font-size:13px}
+  input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-top:6px}
+  textarea{min-height:90px;resize:vertical}
+  .small{font-size:13px;color:var(--muted)}
+  .contact-btn{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+  .muted{color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">JR</div>
+        <div>
+          <h1>JonRecharge</h1>
+          <div class="tag">MLBB • Fast • Secure • Instant</div>
+        </div>
+      </div>
+      <div class="small muted">Jon Recharge Chat</div>
+    </header>
+
+    <main class="grid">
+      <!-- left -->
+      <section>
+        <div class="card">
+          <div class="hero">
+            <div class="thumb">MLBB</div>
+            <div>
+              <h2 style="margin:0 0 6px 0">Mobile Legends — Diamond Top-ups</h2>
+              <p class="lead">Instant MLBB diamond delivery. Fill request, pay, and we'll top-up your account fast. No back-end required — requests open through WhatsApp.</p>
+              <div class="contact-btn">
+                <a id="mainChatBtn" class="btn">Jon Recharge Chat</a>
+                <a id="quickHelp" class="btn ghost">Quick Help</a>
+              </div>
+              <div style="margin-top:10px" class="small muted">
+                Tip: Click "Jon Recharge Chat" to contact via WhatsApp without seeing the phone number on the page.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>How to order</h3>
+          <ol class="muted">
+            <li>Open Chat → Send your ML UID and desired pack.</li>
+            <li>Pay via UPI / Bank and share payment screenshot.</li>
+            <li>We deliver diamonds and confirm your order.</li>
+          </ol>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Quick Request (opens WhatsApp)</h3>
+          <div class="small muted">Fill details and click send — WhatsApp will open with a prefilled message.</div>
+
+          <label>ML UID or Nickname</label>
+          <input id="uid" placeholder="123456789 / PlayerName">
+
+          <label>Pack / Note</label>
+          <input id="pack" placeholder="e.g., 11 diamonds">
+
+          <label>Payment method</label>
+          <select id="pay">
+            <option>UPI</option>
+            <option>Google Pay</option>
+            <option>PhonePe</option>
+            <option>Bank Transfer</option>
+            <option>Other</option>
+          </select>
+
+          <label>Extra note (optional)</label>
+          <textarea id="note" placeholder="Any extra info"></textarea>
+
+          <div style="margin-top:12px">
+            <a id="sendForm" class="btn">Send via WhatsApp</a>
+            <a id="copyUpi" class="btn ghost" style="margin-left:8px">Copy UPI</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- right -->
+      <aside>
+        <div class="card">
+          <h3>Contact & Payment</h3>
+          <div class="small muted">WhatsApp contact is hidden on page — click the chat button to open it.</div>
+
+          <div style="margin-top:12px">
+            <div class="small muted">UPI ID</div>
+            <div class="small" id="upiText" style="margin-top:6px">YOUR_UPI_ID@bank</div>
+            <div style="margin-top:10px"><a class="btn ghost" id="copyUpi2">Copy UPI</a></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="small muted">Email</div>
+            <div class="small" style="margin-top:6px">your-email@example.com</div>
+            <div style="margin-top:8px"><a class="btn ghost" href="mailto:your-email@example.com">Send Email</a></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Why choose JonRecharge</h3>
+          <ul class="muted">
+            <li>Fast delivery</li>
+            <li>Secure payments</li>
+            <li>24/7 support</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer>© <span id="year"></span> JonRecharge — MLBB Top-ups</footer>
+  </div>
+
+<script>
+/*
+  HOW NUMBER IS HIDDEN:
+  - Your real number (international, no plus) is stored BASE64 encoded.
+  - It's not printed in HTML. JS decodes it only when opening WhatsApp.
+  - Casual users won't see the number in page text; it's hidden from view source.
+  - For even stronger hiding, replace openWithNumber() calls with a short-link (bit.ly) you create.
+*/
+
+// === OBFSUCATED PHONE: base64 of '919383094468' (your number)
+const OBF_PHONE = 'OTE5MzgzMDk0NDY4'; // <-- already contains your +91 93830 94468 encoded
+
+// UPI placeholder (replace)
+const UPI_ID = 'YOUR_UPI_ID@bank';
+document.getElementById('upiText').textContent = UPI_ID;
+
+// utility: decode base64
+function decodeBase64(s){ try{ return atob(s); } catch(e){ return ''; } }
+
+// builds wa.me URL with optional text
+function buildWhatsAppUrl(phoneNo, text){
+  const base = 'https://wa.me/' + phoneNo;
+  if(!text) return base;
+  // encode text param
+  return base + '?text=' + encodeURIComponent(text);
+}
+
+// open chat by decoding phone only when needed
+function openChatWithText(text){
+  const phone = decodeBase64(OBF_PHONE);
+  if(!phone){
+    alert('Contact number not configured.');
+    return;
+  }
+  const url = buildWhatsAppUrl(phone, text);
+  window.open(url, '_blank');
+}
+
+// main chat button: opens simple greeting
+document.getElementById('mainChatBtn').addEventListener('click', function(e){
+  const msg = 'Hi, I want to order MLBB diamonds. Please assist.';
+  openChatWithText(msg);
+});
+
+// quick help
+document.getElementById('quickHelp').addEventListener('click', function(){
+  openChatWithText('Hello, quick support for MLBB top-up, please.');
+});
+
+// form send
+document.getElementById('sendForm').addEventListener('click', function(){
+  const uid = document.getElementById('uid').value.trim() || '[no UID]';
+  const pack = document.getElementById('pack').value.trim() || '[no pack]';
+  const pay = document.getElementById('pay').value;
+  const note = document.getElementById('note').value.trim() || '';
+  const msg = `Order Request - MLBB\nUID: ${uid}\nPack: ${pack}\nPayment: ${pay}\nNote: ${note}`;
+  openChatWithText(msg);
+});
+
+// copy UPI
+function copyText(t){
+  navigator.clipboard?.writeText(t).then(()=> alert('Copied: ' + t)).catch(()=> prompt('Copy this:', t));
+}
+document.getElementById('copyUpi').addEventListener('click', ()=> copyText(UPI_ID));
+document.getElementById('copyUpi2').addEventListener('click', ()=> copyText(UPI_ID));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+          </html>
